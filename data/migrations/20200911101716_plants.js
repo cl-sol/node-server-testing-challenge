@@ -7,9 +7,6 @@ exports.up = function(knex) {
             tbl
                 .string("common_name", 256)
                 .notNullable();
-            tbl
-                .string("scientific_name", 256)
-                .notNullable();
         })
   );
 };

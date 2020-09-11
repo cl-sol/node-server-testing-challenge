@@ -8,12 +8,10 @@ module.exports = {
 
 async function add(plant) {
     const [id] = await db('plants')
-        .insert(plant);
+        .insert(plant, "id");
         console.log(id)
 
-    return db("plants")
-        .where({ id })
-        .first();
+    return getPlant(id)
 };
 
 function remove(id) {
@@ -23,7 +21,8 @@ function remove(id) {
 
 };
 
-function getPlant() {
+function getPlant(id) {
     return db("plants")
-        .select("id as ID", "common_name as Plant")
+    .where({ id })
+    .first();
 };
